@@ -3,6 +3,8 @@ import Tooltip from '@mui/material/Tooltip';
 import { winningCombinations } from "./config";
 import { styles } from './config'
 import { enqueueSnackbar } from 'notistack'
+// import Header from "./components/Header";
+
 
 const App = () => {
 
@@ -44,10 +46,10 @@ const App = () => {
 
   if( boardFilled > 4){
     if(checkWinCond(p1)){
-      setWinner("Player 1 Wins ");
+      setWinner("Player 1 Won ");
 
     }else if(checkWinCond(p2)){
-      setWinner("Player 2 Wins");
+      setWinner("Player 2 Won");
     }
   }
    
@@ -69,14 +71,13 @@ const App = () => {
         setBoard((prevState) => {
           return { ...prevState, [id]: "x" };
         });
-        console.log(board);
+
 
       } else {
         setP2((prevMoves) => [...prevMoves, id]);
         setBoard((prevState) => {
           return { ...prevState, [id]: "o" };
         });
-        console.log(board);
       }
 
       setCurrPlayer(() => (currPlayer === "x" ? "o" : "x"));
@@ -96,6 +97,8 @@ const App = () => {
   return (
 
     <div>
+
+
       <Tooltip title="Replay" placement="right">
         <button className="flex mx-auto">
         <h1 onClick={refreshPage} className='text-4xl text-center text-gray-500 p-4 m-4 underline underline-offset-4 hover:cursor-pointer'>{winner}</h1>
